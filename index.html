@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>Turbo Rush 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Saira+Condensed:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+</head><body>
+<canvas id="c"></canvas>
+<div id="hud" hidden>
+ <div class="tl"><div id="hp"><div class="hl"><span>Car health</span><span id="hpv">100%</span></div><div id="hbar"><i data-b="0"></i></div><div id="hst">&#10003; Excellent</div></div><div>Level <b id="lv">1</b> &middot; Traffic tier <b id="tr">1</b></div><div>Score <b id="sc">0</b></div><div>Distance <b id="ds">0.00</b> km</div><div>Coins <b id="co">0</b></div><div id="tmw" hidden>Time <b id="tm">60</b>s</div></div>
+ <div class="sp"><b id="spd">0</b><small>km/h</small><div id="gr">Gear <strong id="gear">1</strong> <span id="rpm">900</span> rpm</div><div id="rbar"><i></i></div></div>
+ <button id="pb" class="ib" aria-label="Pause">II</button><div id="pop"></div>
+</div>
+<div id="touch" hidden>
+ <div class="tg"><button data-k="l">&#9664;</button><button data-k="r">&#9654;</button></div>
+ <div class="tg"><button data-k="s">Drift</button><button data-k="d">Brake</button><button data-k="u" class="g">Gas</button></div>
+</div>
+<section id="menu" class="scr"><div class="panel">
+ <h1>Turbo<span>Rush</span> 3D</h1>
+ <h3>Mode</h3><div class="row" id="modes"><button data-mode="endless">Endless</button><button data-mode="time">Time Attack</button><button data-mode="traffic">Traffic Challenge</button><button data-mode="free">Free Drive</button></div>
+ <h3>Highway</h3><div class="row" id="envs"><button data-env="city">City</button><button data-env="mountain">Mountain</button><button data-env="desert">Desert</button><button data-env="neon">Neon Night</button></div>
+ <h3>Garage</h3><div class="row" id="cols"></div>
+ <h3>Settings</h3><div class="row set"><label>Graphics <select id="q"><option value="0">Low</option><option value="1">Medium</option><option value="2">High</option></select></label><label>Master <input id="vol" type="range" min="0" max="1" step=".05"></label><label>Engine <input id="evol" type="range" min="0" max="1" step=".05"></label><label>Effects <input id="fvol" type="range" min="0" max="1" step=".05"></label><label>Shake <input id="shk" type="range" min="0" max="1" step=".1"></label><label><input id="simp" type="checkbox"> Simple damage visuals</label><label><input id="mute" type="checkbox"> Mute</label></div>
+ <p id="best"></p><button id="play" class="btn">Start engine</button>
+ <p class="hint">W A S D / arrows drive &middot; G shift gear &middot; Space drift &middot; C camera &middot; Esc pause</p>
+</div></section>
+<section id="pause" class="scr" hidden><div class="panel sm"><h2>Paused</h2><button id="resume" class="btn">Resume</button><button id="rp2" class="btn alt" hidden>Repair</button><button id="rst1" class="btn alt">Restart</button><button id="mn1" class="btn alt">Main menu</button></div></section>
+<section id="over" class="scr" hidden><div class="panel sm"><h2 id="ot">Run over</h2><p id="os"></p><button id="nx" class="btn" hidden>Next level</button><button id="rp" class="btn alt" hidden>Repair</button><button id="rst2" class="btn">Restart</button><button id="mn2" class="btn alt">Main menu</button></div></section>
+<script type="module" src="game.js"></script>
+</body></html>
